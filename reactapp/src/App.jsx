@@ -6,6 +6,8 @@ import './App.css'
 import {add,subtract} from './utility'
 import Sample from './component/Sample'
 import HomePage from './component/HomePage'
+import Contact from './component/Contact'
+import { Route, Routes } from 'react-router-dom'
 
 
 function App() {
@@ -14,8 +16,11 @@ function App() {
 
   return (
     <>
-      <Sample count={count} setCount={setCount}/>
-      <HomePage/>
+
+      <Routes>
+        <Route path='/' element={<><HomePage/><Sample/></>}/>
+        <Route path='/contact' element={<Contact/>}/>
+      </Routes>
     </>
   )
 }
