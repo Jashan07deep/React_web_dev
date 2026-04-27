@@ -1,11 +1,15 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Contact() {
     const [name,setName]=useState("")
     const [email,setEmail]=useState("")
     const [message,setMessage]=useState("")
 
-    const handleSubmit = (e) => {
+    const navigate=useNavigate() 
+
+
+    const handleSubmit = (data) => {
         e.preventDefault();
         if (email.endsWith("krmu.edu.in")){
         console.log("Name:", name)
@@ -15,11 +19,11 @@ function Contact() {
             alert("Please enter a valid email address ending with krmu.edu.in")
         }
     }
-                
+
   return (
     <div>
         <h1>Contact us</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={()=>handleSubmit("Sample message")}>
         <input type="text" placeholder='Enter your name' value={name} onChange={(e)=>setName(e.target.value)}/>
         <input type="email" placeholder='Enter your email'value={email} onChange={(e)=>setEmail(e.target.value)}/>
         <textarea type="text" placeholder='Enter your message' value={message} onChange={(e)=>setMessage(e.target.value)}/>
